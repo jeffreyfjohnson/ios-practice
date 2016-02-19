@@ -9,10 +9,10 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate{
+class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     var mapView: MKMapView!
-    var locationReady: Bool = false
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,6 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         mapView = MKMapView()
         view = mapView
         
-        mapView.delegate = self
-        let locationManager = CLLocationManager()
         if (!CLLocationManager.locationServicesEnabled()){
             locationManager.requestWhenInUseAuthorization()
         }
@@ -97,19 +95,34 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     }
     
     func locateMe(button: UIButton){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         
-        var region = MKCoordinateRegion()
-        region.center = mapView.userLocation.coordinate
-        region.span = MKCoordinateSpanMake(0.2, 0.2)
-        mapView.setRegion(region, animated: true)
+        let permission = CLLocationManager.authorizationStatus()
         
+        if permission == .NotDetermined{
+            locationManager.requestWhenInUseAuthorization()
+        }
+        else {
+            locationManager.requestLocation()
+        }
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let lastLocation = locations.last{
+            var region = MKCoordinateRegion()
+            region.center = lastLocation.coordinate
+            region.span = MKCoordinateSpanMake(0.2, 0.2)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error loading map: \(error)")
     }
     
     func cyclePoints(button: UIButton){
-        print("cycle points")
     }
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-            locationReady = true
-    }
 }
