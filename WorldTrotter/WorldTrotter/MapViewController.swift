@@ -13,6 +13,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    let locationQueue = [CLLocationCoordinate2DMake(37.8499, -119.5677),
+                            CLLocationCoordinate2DMake(63.333, -150.5)]
+    var locationQueueIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         rightConstraint.active = true
         
         drawButtons()
+        
+        for location in locationQueue{
+            let pin = MKPointAnnotation()
+            pin.coordinate = location
+            mapView.addAnnotation(pin)
+        }
     }
     
     func drawButtons(){
@@ -111,11 +120,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last{
-            var region = MKCoordinateRegion()
-            region.center = lastLocation.coordinate
-            region.span = MKCoordinateSpanMake(0.2, 0.2)
-            mapView.setRegion(region, animated: true)
+            goToPoint(lastLocation.coordinate)
         }
+    }
+    
+    func goToPoint(location: CLLocationCoordinate2D){
+        var region = MKCoordinateRegion()
+        region.center = location
+        region.span = MKCoordinateSpanMake(0.2, 0.2)
+        mapView.setRegion(region, animated: true)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -123,6 +136,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func cyclePoints(button: UIButton){
+        goToPoint(locationQueue[locationQueueIndex])
+        ++locationQueueIndex
+        if locationQueueIndex > locationQueue.count{
+            locationQueueIndex = 0
+        }
     }
     
 }
