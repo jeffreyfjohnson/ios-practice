@@ -138,7 +138,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     func cyclePoints(button: UIButton){
         goToPoint(locationQueue[locationQueueIndex])
         ++locationQueueIndex
-        if locationQueueIndex > locationQueue.count{
+        if locationQueueIndex >= locationQueue.count{
             locationQueueIndex = 0
         }
     }

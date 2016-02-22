@@ -15,18 +15,18 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     override func loadView() {
         webView = WKWebView()
+        view = webView
         webView.navigationDelegate = self
-        view.addSubview(webView)
         
         webView.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = webView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor, constant: 20)
+        let topConstraint = webView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor)
         let leadingConstraint = webView.topAnchor.constraintEqualToAnchor(view.leadingAnchor)
         let rightConstraint = webView.topAnchor.constraintEqualToAnchor(view.trailingAnchor)
         
         topConstraint.active = true
         leadingConstraint.active = true
         rightConstraint.active = true
-        
+
         webView.loadRequest(NSURLRequest(URL: NSURL(string: "https://www.google.com/")!))
     }
     
