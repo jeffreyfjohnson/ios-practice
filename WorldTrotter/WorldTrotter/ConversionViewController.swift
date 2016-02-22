@@ -62,7 +62,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate{
         
         let existingTextHasDecimal = textField.text?.rangeOfString(decimalSep)
         let newTextHasDecimal = string.rangeOfString(decimalSep)
-        let allowedSet = NSCharacterSet(charactersInString: ",.1234567890-")
+        let allowedSet = NSCharacterSet(charactersInString: decimalSep + "1234567890-")
         
         let rangeOfNonDecimal = string.rangeOfCharacterFromSet(allowedSet.invertedSet)
         

@@ -1,0 +1,24 @@
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "D6Q-Ck-YUH"; */
+"D6Q-Ck-YUH.title" = "Mapa";
+
+/* Class = "UILabel"; text = "is really"; ObjectID = "Qqf-QV-BO0"; */
+"Qqf-QV-BO0.text" = "es realamente";
+
+/* Class = "UILabel"; text = "degrees Fahrenheit"; ObjectID = "h7b-z3-gSf"; */
+"h7b-z3-gSf.text" = "grados Fahrenheit";
+
+/* Class = "UITextField"; placeholder = "value"; ObjectID = "jWt-sp-txh"; */
+"jWt-sp-txh.placeholder" = "valor";
+
+/* Class = "UITabBarItem"; title = "Convert"; ObjectID = "oML-l4-xyw"; */
+"oML-l4-xyw.title" = "Convertir";
+
+/* Class = "UILabel"; text = "degrees Celcius"; ObjectID = "qLq-Da-oBo"; */
+"qLq-Da-oBo.text" = "grados Celcius";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "tv1-65-S0q"; */
+"tv1-65-S0q.text" = "100";
+
+/* Class = "UITabBarItem"; title = "Web"; ObjectID = "uom-f5-FIB"; */
+"uom-f5-FIB.title" = "La Red";

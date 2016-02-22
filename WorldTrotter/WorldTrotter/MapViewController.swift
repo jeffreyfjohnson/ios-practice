@@ -32,7 +32,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         }
         mapView.showsUserLocation = true
         
-        let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
+        let standardString =  NSLocalizedString("Standard", comment: "Standard map view")
+        let hybridString = NSLocalizedString("Hybrid", comment: "Hybrid map view")
+        let satelliteString = NSLocalizedString("Satellite", comment: "Satellite map view")
+        
+        let segmentedControl = UISegmentedControl(items: [standardString, hybridString, satelliteString])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
         
@@ -61,7 +65,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
     
     func drawButtons(){
         let locateMeButton = UIButton(type: .System)
-        locateMeButton.setTitle("Locate Me", forState: .Normal)
+        let locateMeString = NSLocalizedString("Locate Me", comment: "locate me map button")
+        locateMeButton.setTitle(locateMeString, forState: .Normal)
         locateMeButton.translatesAutoresizingMaskIntoConstraints = false
         locateMeButton.backgroundColor = UIColor.whiteColor()
         locateMeButton.layer.cornerRadius = 5
@@ -70,7 +75,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         locateMeButton.addTarget(self, action: "locateMe:", forControlEvents: .TouchUpInside)
         
         let interestingPointsButton = UIButton(type: .System)
-        interestingPointsButton.setTitle("Interesting Points", forState: .Normal)
+        let interestingPointsString = NSLocalizedString("Interesting Points", comment: "interesting points map button")
+        interestingPointsButton.setTitle(interestingPointsString, forState: .Normal)
         interestingPointsButton.backgroundColor = UIColor.whiteColor()
         interestingPointsButton.layer.cornerRadius = 5
         interestingPointsButton.translatesAutoresizingMaskIntoConstraints = false
