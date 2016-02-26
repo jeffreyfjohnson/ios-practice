@@ -11,17 +11,24 @@ import UIKit
 class ItemStore {
     var items = [Item]()
     
-    init() {
-        for _ in 0..<15{
-            createItem()
-        }
-    }
-    
     func createItem() -> Item {
         let newItem = Item(random: true)
         
         items.append(newItem)
         
         return newItem
+    }
+    
+    func removeItem(item: Item){
+        if let index = items.indexOf(item){
+            items.removeAtIndex(index)
+        }
+    }
+    
+    func moveItemAtIndex(fromIndex: Int, toIndex: Int){
+        
+        let movedItem = items[fromIndex]
+        items.removeAtIndex(fromIndex)
+        items.insert(movedItem, atIndex: toIndex)
     }
 }

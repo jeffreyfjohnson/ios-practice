@@ -25,6 +25,27 @@ class ItemsViewController: UITableViewController{
         tableView.scrollIndicatorInsets = insets
     }
     
+    @IBAction func addNewItem(sender: AnyObject){
+        let newItem = itemStore.createItem()
+        
+        if let index = itemStore.items.indexOf(newItem){
+            let indexPath = NSIndexPath(forItem: index, inSection: 0)
+            
+            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    @IBAction func toggleEditMode(sender: AnyObject){
+        if editing {
+            sender.setTitle("Edit", forState: .Normal)
+            setEditing(false, animated: true)
+        }
+        else {
+            sender.setTitle("Done", forState: .Normal)
+            setEditing(true, animated: true)
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemStore.items.count + 1
     }
@@ -43,7 +64,25 @@ class ItemsViewController: UITableViewController{
         
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = String(item.valueInDollars)
-        
+    
         return cell
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete{
+            let itemToDelete = itemStore.items[indexPath.row]
+            
+            itemStore.removeItem(itemToDelete)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        
+        itemStore.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        
+    }
+    
+    
 }

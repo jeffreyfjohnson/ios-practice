@@ -67,10 +67,18 @@
 				598477AC1C7FA8FE00FD6B90 /* Assets.xcassets */,
 				598477AE1C7FA8FE00FD6B90 /* LaunchScreen.storyboard */,
 				598477B11C7FA8FE00FD6B90 /* Info.plist */,
+				598477BF1C808B9300FD6B90 /* model */,
+			);
+			path = Homepwner;
+			sourceTree = "<group>";
+		};
+		598477BF1C808B9300FD6B90 /* model */ = {
+			isa = PBXGroup;
+			children = (
 				598477BB1C7FB47100FD6B90 /* ItemStore.swift */,
 				598477B91C7FAF4A00FD6B90 /* Item.swift */,
 			);
-			path = Homepwner;
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
