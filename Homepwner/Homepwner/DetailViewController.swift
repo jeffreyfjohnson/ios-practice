@@ -20,7 +20,16 @@ class DetailViewController: UIViewController{
         formatter.numberStyle = .DecimalStyle
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
-    }
+        formatter.minimum = 0
+        return formatter
+    }()
+    
+    let dateFormatter: NSDateFormatter = {
+       let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .ShortStyle
+        return formatter
+    }()
     
     var item: Item!
     
@@ -29,8 +38,8 @@ class DetailViewController: UIViewController{
         
         nameField.text = item.name
         serialField.text = item.serialNumber
-        valueField.text = String(item.valueInDollars)
-        dateLabel.text = String(item.dateCreated)
+        valueField.text = numberFormatter.stringFromNumber(item.valueInDollars)
+        dateLabel.text = dateFormatter.stringFromDate(item.dateCreated)
     }
     
 }

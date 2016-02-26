@@ -120,5 +120,16 @@ class ItemsViewController: UITableViewController{
         return proposedDestinationIndexPath
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowItem" {
+            
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let item = itemStore.items[row]
+                let detailViewController = segue.destinationViewController as! DetailViewController
+                detailViewController.item = item
+            }
+            
+        }
+    }
     
 }

@@ -98,7 +98,7 @@
                                     <outlet property="nameLabel" destination="Det-jx-Rj7" id="XGH-IN-FJd"/>
                                     <outlet property="serialNumberLabel" destination="Ckh-S6-wLV" id="RI5-oJ-lOn"/>
                                     <outlet property="valueLabel" destination="zKN-cx-ryb" id="g4g-VE-COi"/>
-                                    <segue destination="2uk-8W-9T1" kind="show" id="1Jz-dM-HcV"/>
+                                    <segue destination="2uk-8W-9T1" kind="show" identifier="ShowItem" id="1Jz-dM-HcV"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleCell" textLabel="j7e-xv-Fd9" style="IBUITableViewCellStyleDefault" id="bAC-GB-gfD">
