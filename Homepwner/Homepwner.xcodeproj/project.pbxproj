@@ -14,6 +14,7 @@
 		598477B81C7FA9DD00FD6B90 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477B71C7FA9DD00FD6B90 /* ItemsViewController.swift */; };
 		598477BA1C7FAF4A00FD6B90 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477B91C7FAF4A00FD6B90 /* Item.swift */; };
 		598477BC1C7FB47100FD6B90 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477BB1C7FB47100FD6B90 /* ItemStore.swift */; };
+		598477BE1C80070B00FD6B90 /* Low-polygon-iphone-6-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 598477BD1C80070B00FD6B90 /* Low-polygon-iphone-6-background.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		598477B71C7FA9DD00FD6B90 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		598477B91C7FAF4A00FD6B90 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		598477BB1C7FB47100FD6B90 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		598477BD1C80070B00FD6B90 /* Low-polygon-iphone-6-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Low-polygon-iphone-6-background.jpg"; path = "../../../Downloads/Low-polygon-iphone-6-background.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				598477A51C7FA8FE00FD6B90 /* AppDelegate.swift */,
 				598477B71C7FA9DD00FD6B90 /* ItemsViewController.swift */,
 				598477A91C7FA8FE00FD6B90 /* Main.storyboard */,
+				598477BD1C80070B00FD6B90 /* Low-polygon-iphone-6-background.jpg */,
 				598477AC1C7FA8FE00FD6B90 /* Assets.xcassets */,
 				598477AE1C7FA8FE00FD6B90 /* LaunchScreen.storyboard */,
 				598477B11C7FA8FE00FD6B90 /* Info.plist */,
@@ -129,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				598477B01C7FA8FE00FD6B90 /* LaunchScreen.storyboard in Resources */,
+				598477BE1C80070B00FD6B90 /* Low-polygon-iphone-6-background.jpg in Resources */,
 				598477AD1C7FA8FE00FD6B90 /* Assets.xcassets in Resources */,
 				598477AB1C7FA8FE00FD6B90 /* Main.storyboard in Resources */,
 			);
