@@ -68,13 +68,37 @@ class ItemsViewController: UITableViewController{
         return cell
     }
     
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "Remove"
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == itemStore.items.count{
+            return false
+        }
+        return true
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if editingStyle == .Delete{
+        if editingStyle == .Delete {
             let itemToDelete = itemStore.items[indexPath.row]
             
-            itemStore.removeItem(itemToDelete)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            let title = "Delete \(itemToDelete.name) ?"
+            let message = "Are you sure you want to delete this item?"
+            
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            ac.addAction(cancelAction)
+            let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: {
+                (action) -> Void in
+                self.itemStore.removeItem(itemToDelete)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            })
+            ac.addAction(deleteAction)
+            
+            presentViewController(ac, animated: true, completion: nil)
+            
         }
     }
     
@@ -82,6 +106,13 @@ class ItemsViewController: UITableViewController{
         
         itemStore.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
         
+    }
+    
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+        if (proposedDestinationIndexPath.row == itemStore.items.count){
+            return NSIndexPath(forRow: itemStore.items.count - 1, inSection: 0)
+        }
+        return proposedDestinationIndexPath
     }
     
     
