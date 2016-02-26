@@ -23,6 +23,9 @@ class ItemsViewController: UITableViewController{
         
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
     }
     
     @IBAction func addNewItem(sender: AnyObject){
@@ -58,12 +61,14 @@ class ItemsViewController: UITableViewController{
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
         
         let item = itemStore.items[indexPath.row]
+        cell.updateLabels(item.valueInDollars < 50)
         
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = String(item.valueInDollars)
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = String(item.valueInDollars)
     
         return cell
     }
