@@ -71,4 +71,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PickDate"{
+            let datePickerController = segue.destinationViewController as! DateSelectViewController
+            datePickerController.item = item
+        }
+    }
+    
 }
