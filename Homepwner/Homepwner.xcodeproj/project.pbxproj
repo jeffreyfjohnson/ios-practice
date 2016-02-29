@@ -19,6 +19,7 @@
 		598477C31C80EA2400FD6B90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C21C80EA2400FD6B90 /* DetailViewController.swift */; };
 		598477C51C8487E200FD6B90 /* BorderChangeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C41C8487E200FD6B90 /* BorderChangeTextField.swift */; };
 		598477C71C848EFD00FD6B90 /* DateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C61C848EFD00FD6B90 /* DateSelectViewController.swift */; };
+		598477C91C850DEF00FD6B90 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C81C850DEF00FD6B90 /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		598477C21C80EA2400FD6B90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		598477C41C8487E200FD6B90 /* BorderChangeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderChangeTextField.swift; sourceTree = "<group>"; };
 		598477C61C848EFD00FD6B90 /* DateSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelectViewController.swift; sourceTree = "<group>"; };
+		598477C81C850DEF00FD6B90 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				598477BB1C7FB47100FD6B90 /* ItemStore.swift */,
 				598477B91C7FAF4A00FD6B90 /* Item.swift */,
+				598477C81C850DEF00FD6B90 /* ImageStore.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				598477BA1C7FAF4A00FD6B90 /* Item.swift in Sources */,
 				598477BC1C7FB47100FD6B90 /* ItemStore.swift in Sources */,
 				598477C31C80EA2400FD6B90 /* DetailViewController.swift in Sources */,
+				598477C91C850DEF00FD6B90 /* ImageStore.swift in Sources */,
 				598477A61C7FA8FE00FD6B90 /* AppDelegate.swift in Sources */,
 				598477C71C848EFD00FD6B90 /* DateSelectViewController.swift in Sources */,
 				598477C11C80A57100FD6B90 /* ItemCell.swift in Sources */,
