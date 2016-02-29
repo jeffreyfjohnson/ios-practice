@@ -10,7 +10,14 @@ import UIKit
 
 class DateSelectViewController: UIViewController {
     
+    @IBOutlet var datePicker: UIDatePicker!
     var item: Item!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        datePicker.setDate(item.dateCreated, animated: true)
+    }
     
     @IBAction func dateChanged(sender: UIDatePicker) {
         item.dateCreated = sender.date
