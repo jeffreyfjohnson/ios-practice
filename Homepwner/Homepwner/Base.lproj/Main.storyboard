@@ -215,6 +215,12 @@
                                             <action selector="takePicture:" destination="2uk-8W-9T1" id="3EE-kH-9P4"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="boV-nc-Nn8"/>
+                                    <barButtonItem title="Delete Image" id="ygz-FG-8hN">
+                                        <connections>
+                                            <action selector="deleteImageTapped:" destination="2uk-8W-9T1" id="NgB-Pq-NtU"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

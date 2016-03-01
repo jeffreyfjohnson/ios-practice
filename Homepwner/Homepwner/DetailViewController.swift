@@ -86,9 +86,28 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         else{
             imagePicker.sourceType = .PhotoLibrary
         }
-        
+        imagePicker.allowsEditing = true
+
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func deleteImageTapped(sender: UIBarButtonItem) {
+        
+        let title = "Delete Image"
+        let message = "Are you sure you want to delete the image for \(item.name)?"
+        
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        ac.addAction(cancelAction)
+        let deleteAction = UIAlertAction(title: "Delete!", style: .Destructive, handler: {
+                (action) -> Void in
+                self.imageStore.deleteImage(forKey: self.item.itemKey)
+                self.imageView.image = nil
+        })
+        ac.addAction(deleteAction)
+        presentViewController(ac, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
