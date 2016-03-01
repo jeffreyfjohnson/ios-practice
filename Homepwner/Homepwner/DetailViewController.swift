@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
     
+    // MARK: - Formatters
     let numberFormatter: NSNumberFormatter = {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = .DecimalStyle
@@ -32,6 +33,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         return formatter
     }()
     
+    // MARK: Model
     var item: Item! {
         didSet{
             navigationItem.title = item.name
@@ -39,6 +41,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     }
     
     var imageStore: ImageStore!
+    
+    // MARK: View Load
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,14 +72,29 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         }
     }
     
+    //MARK: Events
     @IBAction func backgroundTapped(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool{
-        textField.resignFirstResponder()
-        return true
+    
+    @IBAction func deleteImageTapped(sender: UIBarButtonItem) {
+        
+        let title = "Delete Image"
+        let message = "Are you sure you want to delete the image for \(item.name)?"
+        
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        ac.addAction(cancelAction)
+        let deleteAction = UIAlertAction(title: "Delete!", style: .Destructive, handler: {
+            (action) -> Void in
+            self.imageStore.deleteImage(forKey: self.item.itemKey)
+            self.imageView.image = nil
+        })
+        ac.addAction(deleteAction)
+        presentViewController(ac, animated: true, completion: nil)
     }
+
     
     @IBAction func takePicture(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
@@ -92,23 +111,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    
-    @IBAction func deleteImageTapped(sender: UIBarButtonItem) {
-        
-        let title = "Delete Image"
-        let message = "Are you sure you want to delete the image for \(item.name)?"
-        
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        ac.addAction(cancelAction)
-        let deleteAction = UIAlertAction(title: "Delete!", style: .Destructive, handler: {
-                (action) -> Void in
-                self.imageStore.deleteImage(forKey: self.item.itemKey)
-                self.imageView.image = nil
-        })
-        ac.addAction(deleteAction)
-        presentViewController(ac, animated: true, completion: nil)
+    //MARK: Delegate methods
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage!
@@ -120,6 +128,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    //MARK: Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PickDate"{
             let datePickerController = segue.destinationViewController as! DateSelectViewController
