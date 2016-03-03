@@ -10,6 +10,13 @@ import UIKit
 
 class ItemStore {
     var items = [Item]()
+    let itemArchiveUrl: NSURL = DocUtil.getFilePathUrl("items.archive")
+    
+    init() {
+        if let archivedItems = NSKeyedUnarchiver.unarchiveObjectWithFile(itemArchiveUrl.path!) as? [Item]{
+            items = archivedItems 
+        }
+    }
     
     func createItem() -> Item {
         let newItem = Item(random: true)
@@ -30,5 +37,10 @@ class ItemStore {
         let movedItem = items[fromIndex]
         items.removeAtIndex(fromIndex)
         items.insert(movedItem, atIndex: toIndex)
+    }
+    
+    func saveChanges() -> Bool {
+        print("saving items to \(itemArchiveUrl)")
+        return NSKeyedArchiver.archiveRootObject(items, toFile: itemArchiveUrl.path!)
     }
 }

@@ -20,6 +20,7 @@
 		598477C51C8487E200FD6B90 /* BorderChangeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C41C8487E200FD6B90 /* BorderChangeTextField.swift */; };
 		598477C71C848EFD00FD6B90 /* DateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C61C848EFD00FD6B90 /* DateSelectViewController.swift */; };
 		598477C91C850DEF00FD6B90 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477C81C850DEF00FD6B90 /* ImageStore.swift */; };
+		598477CB1C87B0A900FD6B90 /* DocUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477CA1C87B0A900FD6B90 /* DocUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		598477C41C8487E200FD6B90 /* BorderChangeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderChangeTextField.swift; sourceTree = "<group>"; };
 		598477C61C848EFD00FD6B90 /* DateSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelectViewController.swift; sourceTree = "<group>"; };
 		598477C81C850DEF00FD6B90 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		598477CA1C87B0A900FD6B90 /* DocUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				598477C21C80EA2400FD6B90 /* DetailViewController.swift */,
 				598477C61C848EFD00FD6B90 /* DateSelectViewController.swift */,
 				598477C01C80A57100FD6B90 /* ItemCell.swift */,
+				598477CA1C87B0A900FD6B90 /* DocUtil.swift */,
 				598477A91C7FA8FE00FD6B90 /* Main.storyboard */,
 				598477BD1C80070B00FD6B90 /* Low-polygon-iphone-6-background.jpg */,
 				598477AC1C7FA8FE00FD6B90 /* Assets.xcassets */,
@@ -172,6 +175,7 @@
 				598477B81C7FA9DD00FD6B90 /* ItemsViewController.swift in Sources */,
 				598477BA1C7FAF4A00FD6B90 /* Item.swift in Sources */,
 				598477BC1C7FB47100FD6B90 /* ItemStore.swift in Sources */,
+				598477CB1C87B0A900FD6B90 /* DocUtil.swift in Sources */,
 				598477C31C80EA2400FD6B90 /* DetailViewController.swift in Sources */,
 				598477C91C850DEF00FD6B90 /* ImageStore.swift in Sources */,
 				598477A61C7FA8FE00FD6B90 /* AppDelegate.swift in Sources */,
