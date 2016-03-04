@@ -12,6 +12,8 @@
 		598477DE1C89CEF700FD6B90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598477DC1C89CEF700FD6B90 /* Main.storyboard */; };
 		598477E01C89CEF700FD6B90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598477DF1C89CEF700FD6B90 /* Assets.xcassets */; };
 		598477E31C89CEF700FD6B90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598477E11C89CEF700FD6B90 /* LaunchScreen.storyboard */; };
+		598477EB1C89CF6700FD6B90 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477EA1C89CF6700FD6B90 /* Line.swift */; };
+		598477ED1C89D00100FD6B90 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598477EC1C89D00100FD6B90 /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		598477DF1C89CEF700FD6B90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		598477E21C89CEF700FD6B90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		598477E41C89CEF700FD6B90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		598477EA1C89CF6700FD6B90 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		598477EC1C89D00100FD6B90 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				598477DF1C89CEF700FD6B90 /* Assets.xcassets */,
 				598477E11C89CEF700FD6B90 /* LaunchScreen.storyboard */,
 				598477E41C89CEF700FD6B90 /* Info.plist */,
+				598477EA1C89CF6700FD6B90 /* Line.swift */,
+				598477EC1C89D00100FD6B90 /* DrawView.swift */,
 			);
 			path = TouchTracker;
 			sourceTree = "<group>";
@@ -135,7 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				598477EB1C89CF6700FD6B90 /* Line.swift in Sources */,
 				598477DB1C89CEF700FD6B90 /* ViewController.swift in Sources */,
+				598477ED1C89D00100FD6B90 /* DrawView.swift in Sources */,
 				598477D91C89CEF700FD6B90 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
