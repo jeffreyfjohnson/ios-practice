@@ -19,6 +19,12 @@ class DrawView: UIView{
         }
     }
     
+    @IBInspectable var currentLineColorInterpolate: UIColor = UIColor.redColor(){
+        didSet{
+            setNeedsDisplay()
+        }
+    }
+    
     @IBInspectable var currentLineColor: UIColor = UIColor.redColor(){
         didSet{
             setNeedsDisplay()
@@ -97,9 +103,29 @@ class DrawView: UIView{
         currentLineColor.setStroke()
         
         for (_ , line) in currentLines {
+            let height = abs(line.end.y - line.begin.y)
+            let length = abs(line.end.x - line.begin.x)
+            
+            let angle = asin(Double(height) / Double(length))
+            print(angle)
+            
+            interpolateColor(currentLineColor, b: currentLineColorInterpolate, t: CGFloat(abs(angle))).setStroke()
+            
             strokeLine(line)
         }
         
+    }
+    
+    func interpolateColor(a: UIColor, b: UIColor, t: CGFloat) -> UIColor{
+        let colorA = CIColor(color: a)
+        let colorB = CIColor(color: b)
+        
+        let r = (1 - t) * colorA.red + t * colorB.red
+        let g = (1 - t) * colorA.green + t * colorB.green
+        let b = (1 - t) * colorA.blue + t * colorB.blue
+        
+        let lerpColor = CIColor(red: r, green: g, blue: b)
+        return UIColor(CIColor: lerpColor)
     }
     
     

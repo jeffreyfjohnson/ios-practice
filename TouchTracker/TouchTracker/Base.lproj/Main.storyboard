@@ -27,6 +27,9 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="lineThickness">
                                 <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="currentLineColorInterpolate">
+                                <color key="value" red="0.74158653846153832" green="0.11841484555931074" blue="0.080939797345462902" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
