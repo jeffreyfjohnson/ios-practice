@@ -105,9 +105,11 @@ class DrawView: UIView{
         for (_ , line) in currentLines {
             let height = abs(line.end.y - line.begin.y)
             let length = abs(line.end.x - line.begin.x)
-            
-            let angle = asin(Double(height) / Double(length))
+            print("length = \(length)")
+            print("height = \(height)")
+            let angle = atan(Double(height) / Double(length))
             print(angle)
+            print("**********")
             
             interpolateColor(currentLineColor, b: currentLineColorInterpolate, t: CGFloat(abs(angle))).setStroke()
             
