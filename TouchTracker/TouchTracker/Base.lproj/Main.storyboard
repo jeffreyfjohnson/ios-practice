@@ -19,16 +19,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="finishedLineColor">
-                                <color key="value" red="0.48547676282051277" green="0.41062251986279696" blue="0.1033092375256127" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.053053373250022018" blue="0.1680482514715268" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="currentLineColor">
-                                <color key="value" red="0.097336109558082293" green="0.74158653846153832" blue="0.15329749226866285" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="0.12948027408375767" green="0.12053223009386244" blue="0.74158653846153832" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="lineThickness">
                                 <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="currentLineColorInterpolate">
-                                <color key="value" red="0.74158653846153832" green="0.11841484555931074" blue="0.080939797345462902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="0.92768187890126785" blue="0.054851385477720949" alpha="1" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
