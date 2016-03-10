@@ -14,6 +14,7 @@ class DrawView: UIView{
     var currentTouches = [NSValue: CGPoint]()
     var finishedLines = [Line]()
     var finishedCircles = [(CGPoint, CGPoint)]()
+    var selectedLineIndex: (line: Bool, index: Int?)
     
     //MARK: Inspectables
     
@@ -51,6 +52,95 @@ class DrawView: UIView{
         didSet{
             setNeedsDisplay()
         }
+    }
+    
+    //MARK: init
+    required init?(coder aDecoder: NSCoder) {
+        selectedLineIndex = (false, nil)
+        super.init(coder: aDecoder)
+        
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTap:")
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        doubleTapRecognizer.delaysTouchesBegan = true
+        addGestureRecognizer(doubleTapRecognizer)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "singleTap:")
+        tapRecognizer.delaysTouchesBegan = true
+        tapRecognizer.requireGestureRecognizerToFail(doubleTapRecognizer)
+        addGestureRecognizer(tapRecognizer)
+    }
+    
+    //MARK: Gesture Handling
+    func singleTap(gestureRecognizer: UIGestureRecognizer){
+        let point = gestureRecognizer.locationInView(self)
+        let closestLine = indexOfLineAtPoint(point)
+        let closestCircle = indexOfCircleAtPoint(point)
+        if let lineDist = closestLine.distance, circDist = closestCircle.distance {
+            let lineCloser = lineDist < circDist
+            selectedLineIndex = (lineCloser, lineCloser ? closestLine.index : closestCircle.index)
+        }
+        else if let _ = closestLine.distance{
+            selectedLineIndex = (true, closestLine.index)
+        }
+        else if let _ = closestCircle.distance{
+            selectedLineIndex = (false, closestCircle.index)
+        }
+        else{
+            selectedLineIndex = (false, nil)
+        }
+        
+        
+        setNeedsDisplay()
+    }
+    
+    func doubleTap(gestureRecognizer: UIGestureRecognizer){
+        currentTouches.removeAll()
+        currentLine = nil
+        finishedCircles.removeAll()
+        finishedLines.removeAll()
+        selectedLineIndex = (false, nil)
+        
+        setNeedsDisplay()
+    }
+    
+    func indexOfLineAtPoint(point: CGPoint) -> (index: Int?, distance: CGFloat?){
+        
+        for (index, line) in finishedLines.enumerate() {
+            let begin = line.begin
+            let end = line.end
+            
+            for t in CGFloat(0).stride(to: 1.0, by: 0.05){
+                let x = begin.x + ((end.x - begin.x) * t)
+                let y = begin.y + ((end.y - begin.y) * t)
+                
+                let h = hypot(x - point.x, y - point.y)
+                if h < 20 {
+                    return (index, h)
+                }
+            }
+        }
+        
+        return (nil, nil)
+    }
+    
+    func indexOfCircleAtPoint(point: CGPoint) -> (index: Int?, distance: CGFloat?){
+        
+        for (index, circle) in finishedCircles.enumerate() {
+            let mid = midpoint(circle.0, circle.1)
+            let radius = distance(mid, circle.0)
+            
+            for t in CGFloat(0).stride(to: CGFloat(2 * M_PI), by: 0.05){
+                
+                let x = mid.x + radius * cos(t)
+                let y = mid.y + radius * sin(t)
+                
+                let h = hypot(x - point.x, y - point.y)
+                if h < 20 {
+                    return (index, h)
+                }
+            }
+        }
+        return (nil, nil)
     }
     
     //MARK: Touch Handling
@@ -173,6 +263,17 @@ class DrawView: UIView{
             }
         }
         
+        if let index = selectedLineIndex.index {
+            UIColor.greenColor().setStroke()
+            if selectedLineIndex.line {
+                strokeLine(finishedLines[index])
+            }
+            else {
+                let points = finishedCircles[index]
+                strokeCircle(points.0, pointB: points.1)
+            }
+            
+        }
         
     }
     
