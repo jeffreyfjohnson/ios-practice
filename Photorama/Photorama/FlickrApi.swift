@@ -12,9 +12,24 @@ enum Method: String{
     case RecentPhotos = "flickr.photos.getRecent"
 }
 
+enum PhotosResult{
+    case Success([Photo])
+    case Failure(ErrorType)
+}
+
+enum FlickrError: ErrorType{
+    case InvalidJSONData
+}
+
 struct FlickrApi {
     private static let baseURLString = "https://api.flickr.com/services/rest"
     private static let APIKey = "a6d819499131071f158fd740860a5a88"
+    
+    private static let dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
     
     private static func flickrUrl(method method: Method, params: [String : String]?) -> NSURL{
         
@@ -47,5 +62,23 @@ struct FlickrApi {
     
     static func recentPhotosUrl() -> NSURL{
         return flickrUrl(method: .RecentPhotos, params: ["extras" : "url_h,date_taken"])
+    }
+    
+    static func photosFromJsonData(jsonData: NSData) -> PhotosResult{
+        
+        do{
+            let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
+            
+            guard let jsonDictionary = jsonObject as? [NSObject : AnyObject], photos = jsonDictionary["photos"] as? [String:AnyObject], photosArray = photos["photo"] as? [[String:AnyObject]] else {
+                return .Failure(FlickrError.InvalidJSONData)
+            }
+            
+            var finalPhotos = [Photo]()
+            return .Success(finalPhotos)
+        }
+        catch let error{
+            return .Failure(error)
+        }
+        
     }
 }
