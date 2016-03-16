@@ -31,6 +31,8 @@ class PhotosViewController: UIViewController {
                     print("error fetching recents: \(error)")
                     self.photoDataSource.photos.removeAll()
                 }
+                
+                self.collectionView.reloadData()
             }
         }
     }
