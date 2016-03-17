@@ -53,6 +53,11 @@ class PhotoStore {
     
     func fetchImageForPhoto(photo: Photo, completion: (ImageResult) -> Void){
         
+        if let currentPhoto = photo.image {
+            completion(.Success(currentPhoto))
+            return
+        }
+        
         let request = NSURLRequest(URL: photo.remoteUrl)
         
         let task = session.dataTaskWithRequest(request){
