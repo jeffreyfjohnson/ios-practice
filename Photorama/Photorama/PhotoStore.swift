@@ -19,6 +19,8 @@ enum PhotoError:ErrorType{
 
 class PhotoStore {
     
+    let coreDataStack = CoreDataStack(modelName: "Photorama")
+    
     let session : NSURLSession = {
        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         return NSURLSession(configuration: config)
@@ -58,7 +60,7 @@ class PhotoStore {
             return
         }
         
-        let request = NSURLRequest(URL: photo.remoteUrl)
+        let request = NSURLRequest(URL: photo.remoteURL)
         
         let task = session.dataTaskWithRequest(request){
             (data, response, error) -> Void in
